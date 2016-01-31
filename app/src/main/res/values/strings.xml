@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FoodShop</string>
+    <string name="title_activity_food_shop">FoodShopActivity</string>
+    <string name="action_settings">Settings</string>
+</resources>

@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    def config = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion config.getAt("androidCompileSdkVersion")
+    buildToolsVersion config.getAt("androidBuildToolsVersion")
+
+    defaultConfig {
+        applicationId "com.ongtonnesoup.foodshop"
+        minSdkVersion config.getAt("androidMinSdkVersion")
+        targetSdkVersion config.getAt("androidTargetSdkVersion")
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    def dependencies = rootProject.ext.appDependencies
+
+    compile project(':browse')
+
+    testCompile 'junit:junit:4.12'
+    compile dependencies.appCompat
+    compile dependencies.supportAnnotations
+    compile dependencies.design
+    compile dependencies.percent
+    compile dependencies.recyclerView
+    compile dependencies.okHttp
+    compile dependencies.otto
+    compile dependencies.retrofit
+    compile dependencies.picasso
+    compile dependencies.dagger
+    compile dependencies.daggerCompiler
+    provided dependencies.javaxAnnotation
+
+}
